@@ -51,7 +51,7 @@ export const removeCourseAction = createAsyncThunk(
 );
 
 export const likeToggleAction = createAsyncThunk(
-  "course/ToggleLike",
+  "course/toggleLike",
   async ({ courseId, isLiked, isDetailPage }: ILikeToggleParams) => {
     let resData: ToggleLikeApiResponse;
 

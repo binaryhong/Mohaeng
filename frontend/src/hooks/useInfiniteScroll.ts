@@ -8,16 +8,16 @@ export interface UseInfiniteScroll {
   isLoading: boolean;
   loadMoreCallback: (el: HTMLDivElement) => void;
   isInfiniteScrolling: boolean;
-  dynamicPosts: IPlacesSearch[];
+  dynamicPlaces: IPlacesSearch[];
   isLastPage: boolean;
 }
 
 export const useInfiniteScroll = (
-  posts: IPlacesSearch[],
+  places: IPlacesSearch[],
   hasNext: boolean,
   keyword: string | null
 ): UseInfiniteScroll => {
-  const [dynamicPosts, setDynamicPosts] = useState<IPlacesSearch[]>(posts);
+  const [dynamicPlaces, setDynamicPlaces] = useState<IPlacesSearch[]>(places);
   const [isInfiniteScrolling, setIsInfiniteScrolling] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isLastPage, setIsLastPage] = useState(false);
@@ -32,13 +32,13 @@ export const useInfiniteScroll = (
   const loadMoreTimeoutRef = useRef<NodeJS.Timeout>(loadMoreTimeout);
 
   useEffect(() => {
-    const lastIndex = posts.length - 1;
+    const lastIndex = places.length - 1;
     // post가 변경되면 dynamicPosts에 저장하고 마지막 item의 id와 rating을 저장함.
-    setDynamicPosts(posts);
-    setLastItemId(posts[lastIndex]?.placeId);
-    setLastItemRating(posts[lastIndex]?.rating);
+    setDynamicPlaces(places);
+    setLastItemId(places[lastIndex]?.placeId);
+    setLastItemRating(places[lastIndex]?.rating);
     setIsLastPage(!hasNext);
-  }, [posts]);
+  }, [places]);
 
   /** Intersection Observer의 콜백 함수 */
   const handleObserver = useCallback(
@@ -64,8 +64,8 @@ export const useInfiniteScroll = (
             .then((resp) => {
               const { hasNext, places } = resp.data.data;
               if (places?.length > 0) {
-                const newDynamicPosts = [...dynamicPosts, ...places];
-                setDynamicPosts(newDynamicPosts);
+                const newDynamicPosts = [...dynamicPlaces, ...places];
+                setDynamicPlaces(newDynamicPosts);
                 setIsInfiniteScrolling(true);
                 setIsLastPage(!hasNext);
 
@@ -90,7 +90,7 @@ export const useInfiniteScroll = (
         }, 500);
       }
     },
-    [dynamicPosts]
+    [dynamicPlaces]
   );
 
   const loadMoreCallback = useCallback(
@@ -115,7 +115,7 @@ export const useInfiniteScroll = (
     isLoading,
     loadMoreCallback,
     isInfiniteScrolling,
-    dynamicPosts,
+    dynamicPlaces,
     isLastPage,
   };
 };

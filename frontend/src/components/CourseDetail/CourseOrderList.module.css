@@ -110,8 +110,7 @@
 /* MEDIA QUERIES (tablets) */
 @media screen and (max-width: 1024px) {
   .course-orderlist-container {
-    width: 100%;
-    height: calc(50% - 0.3rem);
+    flex-basis: 55%;
   }
 }
 
@@ -139,7 +138,7 @@
 
   .remove-btn-wrapper {
     font-size: 1.2rem;
-    padding: 0 0.3rem;
+    padding: 0 0.6rem 0 0.3rem;
   }
   .remove-btn {
     padding: 0.3rem;

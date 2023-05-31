@@ -17,7 +17,7 @@
 .likeCount {
   position: absolute;
   bottom: 2px;
-  font-size: 0.1rem;
+  font-size: 4px;
   color: var(--color-text-basic);
 }
 

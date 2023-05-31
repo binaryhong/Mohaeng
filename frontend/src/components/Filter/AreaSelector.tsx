@@ -1,6 +1,5 @@
 import { useAppDispatch, useAppSelector } from "@/src/hooks/useReduxHooks";
 import { selectArea } from "@/src/store/reducers/FilterSlice";
-import { ResionOptions } from "@/src/utils/input-options";
 import styles from "./AreaSelector.module.css";
 
 const areas = [

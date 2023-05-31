@@ -88,7 +88,7 @@ export default React.memo(function KakaoMap({ mapData }: PositionsProps) {
 
   return (
     <>
-      <div id="map" style={{ flexBasis: "62%" }} />
+      <div id="map" style={{ flex: "1" }} />
       <p id="result" />
     </>
   );

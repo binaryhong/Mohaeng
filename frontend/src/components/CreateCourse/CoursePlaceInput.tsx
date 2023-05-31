@@ -49,7 +49,7 @@ const CoursePlaceInput = () => {
     isLoading,
     loadMoreCallback,
     isInfiniteScrolling,
-    dynamicPosts,
+    dynamicPlaces,
     isLastPage,
   } = useInfiniteScroll(places, hasNext, debouncedSearch);
 
@@ -68,7 +68,7 @@ const CoursePlaceInput = () => {
       {places.length > 0 && (
         <>
           <PlaceSelectList
-            places={isInfiniteScrolling ? dynamicPosts : places}
+            places={isInfiniteScrolling ? dynamicPlaces : places}
             isLoading={isLoading}
             loadMoreCallback={loadMoreCallback}
             isLastPage={isLastPage}

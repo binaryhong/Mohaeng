@@ -52,45 +52,6 @@ const CourseOrderList = ({ places, mode }: any) => {
     dispatch(updatePlaces(listCopy));
   };
 
-  const handleTouchStart = (e: TouchEvent<HTMLLIElement>, position: number) => {
-    if (!(mode === "write")) return;
-    draggingItem.current = position;
-  };
-
-  const handleTouchMove = (e: TouchEvent<HTMLLIElement>) => {
-    if (!(mode === "write")) return;
-    const touch = e.touches[0];
-    const targetElement = document.elementFromPoint(
-      touch.clientX,
-      touch.clientY
-    );
-    if (targetElement instanceof HTMLLIElement) {
-      const position = parseInt(
-        targetElement.getAttribute("data-position") || ""
-      );
-      setDragOverIndex(position);
-      dragOverItem.current = position;
-    }
-  };
-
-  const handleTouchEnd = () => {
-    if (!(mode === "write")) return;
-    const listCopy = [...places];
-    if (
-      draggingItem.current !== undefined &&
-      dragOverItem.current !== undefined
-    ) {
-      const draggingItemContent = listCopy[draggingItem.current];
-      listCopy.splice(draggingItem.current, 1);
-      listCopy.splice(dragOverItem.current, 0, draggingItemContent);
-    }
-
-    draggingItem.current = undefined;
-    dragOverItem.current = undefined;
-
-    dispatch(updatePlaces(listCopy));
-  };
-
   return (
     <div className={styles["course-orderlist-container"]}>
       <ol className={styles["course-list"]}>
@@ -104,9 +65,6 @@ const CourseOrderList = ({ places, mode }: any) => {
             onDragStart={(e) => handleDragStart(e, idx)}
             onDragOver={(e) => e.preventDefault()}
             onDragEnter={(e) => handleDragEnter(e, idx)}
-            onTouchStart={(e) => handleTouchStart(e, idx)}
-            onTouchMove={(e) => handleTouchMove(e)}
-            onTouchEnd={(e) => handleTouchEnd()}
             draggable={mode === "write"}
           >
             <p className={styles["order-number"]}>{idx + 1}</p>
