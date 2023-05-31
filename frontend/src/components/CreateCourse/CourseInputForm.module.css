@@ -109,6 +109,16 @@
   padding: 0.7rem 0.8rem;
 }
 
+.input-group input[type="date"]::before {
+  content: attr(data-placeholder);
+  width: 100%;
+}
+
+.input-group input[type="date"]:focus::before,
+.input-group input[type="date"]:valid::before {
+  display: none;
+}
+
 .content {
   display: block;
   resize: none;

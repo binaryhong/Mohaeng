@@ -208,7 +208,7 @@ const CourseInputForm = () => {
             <input
               type="date"
               name="startDate"
-              placeholder={"날짜 선택"}
+              data-placeholder="날짜 선택"
               value={enteredStartDate}
               onChange={startDateChangedHandler}
               onBlur={startDateBlurHandler}
@@ -229,7 +229,7 @@ const CourseInputForm = () => {
             <input
               type="date"
               name="endDate"
-              placeholder={"날짜 선택"}
+              data-placeholder="날짜 선택"
               value={enteredEndDate}
               onChange={endDateChangedHandler}
               onBlur={endDateBlurHandler}
