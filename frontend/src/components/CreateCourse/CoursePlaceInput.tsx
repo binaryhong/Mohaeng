@@ -14,13 +14,14 @@ export interface Images {
 const CoursePlaceInput = () => {
   const [places, setPlaces] = useState<IPlacesSearch[]>([]);
   const [search, setSearch] = useState<string | null>(""); //<string | null>
+  const [isSearched, setIsSearched] = useState(false);
   const [hasNext, setHasNext] = useState(false);
 
   const ChangePlaceHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
   };
 
-  const debouncedSearch = useDebounce(search, 500);
+  const debouncedSearch = useDebounce(search, 400);
 
   useEffect(() => {
     async function fetchData() {
@@ -33,10 +34,10 @@ const CoursePlaceInput = () => {
         const placeSearchResult = placeSearchRes.data;
         setPlaces(placeSearchResult.data.places);
         setHasNext(placeSearchResult.data.hasNext);
+        setIsSearched(true);
       } catch (error) {
         console.error("Error fetching places:", error);
         setPlaces([]);
-      } finally {
       }
     }
 
@@ -65,6 +66,11 @@ const CoursePlaceInput = () => {
           placeholder={"검색할 장소를 입력해주세요"}
         />
       </label>
+      {isSearched && !(places.length > 0) && (
+        <div className={styles["no-results"]}>
+          검색 결과가 존재하지 않습니다.
+        </div>
+      )}
       {places.length > 0 && (
         <>
           <PlaceSelectList

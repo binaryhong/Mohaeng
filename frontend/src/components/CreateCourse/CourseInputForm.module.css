@@ -106,7 +106,7 @@
   outline: none;
   border: none;
   margin: 0;
-  padding: 0.7rem 0.8rem;
+  padding: 0.6rem 0.8rem;
 }
 
 .input-group input[type="date"]::before {

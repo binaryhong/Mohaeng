@@ -9,9 +9,6 @@
 }
 
 .input {
-  width: 100%;
-}
-.input {
   display: block;
   width: 100%;
   margin-bottom: 0.4rem;
@@ -31,13 +28,19 @@
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  padding: 10px 14px;
+  padding: 0.5rem 0.8rem;
   font-size: 14px;
   color: #666;
   outline: none;
   margin: 0;
   border: none;
   width: 100%;
+}
+
+.no-results {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--color-text-basic);
 }
 
 /* MEDIA QUERIES (tablets) */

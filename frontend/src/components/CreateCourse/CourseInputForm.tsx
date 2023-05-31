@@ -184,7 +184,7 @@ const CourseInputForm = () => {
             value={enteredTitle}
             onChange={titleChangedHandler}
             onBlur={titleBlurHandler}
-            placeholder={"4자 이상 25자 이하로 제목을 작성해주세요."}
+            placeholder={"제목을 작성해주세요."}
             required
           />
           {titleInputHasError && (
@@ -277,10 +277,10 @@ const CourseInputForm = () => {
         </div>
       </div>
       <label className={styles["input-group"]}>
-        <span className={styles["input-title"]}>코스 설명</span>
+        <span className={styles["input-title"]}>코스 내용</span>
         <textarea
           name="content"
-          placeholder={"10자 이상 200자 이하로 작성해 주세요."}
+          placeholder={"10자 이상 200자 이하로 내용을 작성해 주세요."}
           value={enteredContent}
           onChange={contentChangedHandler}
           onBlur={contentBlurHandler}

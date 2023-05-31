@@ -22,7 +22,6 @@ const PlaceSelectList = ({
 }: ISelectListProps) => {
   const dispatch = useAppDispatch();
   const AddedPlaces = useAppSelector((state) => state.courseForm.course.places);
-
   const itemClickHandler = (place: any) => {
     if (!(AddedPlaces.length >= 20)) {
       dispatch(addPlaceObject(place));
